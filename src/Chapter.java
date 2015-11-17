@@ -11,8 +11,8 @@ public class Chapter {
 		return content;
 	}
 	
-	public void setContent(String content) {
-		this.content = content; 
+	public void addContent(String content) {
+		this.content += content;
 	}
 
 }

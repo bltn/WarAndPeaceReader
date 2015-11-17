@@ -12,6 +12,12 @@ public class Volume {
 		chapters = new LinkedList<Chapter>();
 	}
 	
+	public Chapter newChapter() {
+		Chapter chapter = new Chapter();
+		chapters.add(chapter);
+		return chapter;
+	}
+	
 	public Chapter getChapter(int chapterNum) {
 		return chapters.get(chapterNum-1);
 	}
