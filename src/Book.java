@@ -33,9 +33,10 @@ public class Book {
 		
 			BufferedReader br = new BufferedReader(new FileReader(bookName));
 			String line;
+			Volume currentVolume;
+			Chapter currentChapter;
 			while ((line = br.readLine()) != null) {
-				Volume currentVolume;
-				Chapter currentChapter;
+
 				chapterMatcher.reset(line);
 				epilogueMatcher.reset(line);
 				volumeMatcher.reset(line);
