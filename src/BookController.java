@@ -1,6 +1,9 @@
 
 public class BookController implements Controller{
 	
+	/**
+	 * The {@link Book} this {@link Controller} should handle. 
+	 */
 	private Book book;
 	
 	public BookController(Book book) {
