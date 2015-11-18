@@ -37,33 +37,33 @@ public class Book {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-			String line;
-			Volume currentVolume = null;
-			Chapter currentChapter = null;
-			try {
-				while ((line = br.readLine()) != null) {
-					chapterMatcher.reset(line);
-					epilogueMatcher.reset(line);
-					volumeMatcher.reset(line);
-					if (epilogueMatcher.find() || volumeMatcher.find()) {
-						currentVolume = new Volume();
-						currentChapter = currentVolume.newChapter();
-						volumes.add(currentVolume);
-						currentChapter.addContent(line);
-						System.out.println(line);
-					}
-					else if (chapterMatcher.matches()) {
-						currentChapter = currentVolume.newChapter();
-						currentChapter.addContent(line);
-						System.out.println(line);
-					}
-				
-					else {
-						currentChapter.addContent(line);
-					}
+		String line;
+		Volume currentVolume = null;
+		Chapter currentChapter = null;
+		try {
+			while ((line = br.readLine()) != null) {
+				chapterMatcher.reset(line);
+				epilogueMatcher.reset(line);
+				volumeMatcher.reset(line);
+				if (epilogueMatcher.find() || volumeMatcher.find()) {
+					currentVolume = new Volume();
+					currentChapter = currentVolume.newChapter();
+					volumes.add(currentVolume);
+					currentChapter.addContent(line);
+					System.out.println(line);
 				}
-			} catch (IOException e) {
-				e.printStackTrace();
+				else if (chapterMatcher.matches()) {
+					currentChapter = currentVolume.newChapter();
+					currentChapter.addContent(line);
+					System.out.println(line);
+				}
+			
+				else {
+					currentChapter.addContent(line);
+				}
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
