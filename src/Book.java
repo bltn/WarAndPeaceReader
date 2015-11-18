@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Book {
 	
@@ -22,6 +24,13 @@ public class Book {
 	
 	//TODO: Figure out how to do the line pattern matching 
 	private void setContent() {
+		Pattern chapterExp = Pattern.compile("(CHAPTER) (.{0,7})");
+		Matcher chapterMatcher = chapterExp.matcher("");
+		Pattern epilogueExp = Pattern.compile("(EPILOGUE)");
+		Matcher epilogueMatcher = epilogueExp.matcher("");
+		Pattern volumeExp = Pattern.compile("(BOOK)");
+		Matcher volumeMatcher = volumeExp.matcher("");
+		
 			BufferedReader br = new BufferedReader(new FileReader(bookName));
 			String line;
 			while ((line = br.readLine()) != null) {
