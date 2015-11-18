@@ -36,6 +36,9 @@ public class Book {
 			while ((line = br.readLine()) != null) {
 				Volume currentVolume;
 				Chapter currentChapter;
+				chapterMatcher.reset(line);
+				epilogueMatcher.reset(line);
+				volumeMatcher.reset(line);
 				if (/*Line starts with BOOK [NUMBER]: or [FIRST/SECOND] EPILOGUE:*/) {
 					currentVolume = new Volume();
 					currentChapter = currentVolume.newChapter();
