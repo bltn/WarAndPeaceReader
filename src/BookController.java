@@ -19,10 +19,18 @@ public class BookController implements Controller{
 		return null;
 	}
 
+	/**
+	 * Gets the chapter for the given volume.
+	 * @param volumeNumber the volume number
+	 * @param chapterNumber the chapter number
+	 * @return the content of the chapter
+	 */
 	@Override
 	public String getChapter(int volumeNumber, int chapterNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		//TODO: Add error handling for non existent volumes and/or chapters 
+		Volume volume = book.getVolume(volumeNumber);
+		Chapter chapter = volume.getChapter(chapterNumber);
+		return chapter.getContent();
 	}
 
 	@Override
