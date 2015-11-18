@@ -40,13 +40,13 @@ public class Book {
 				chapterMatcher.reset(line);
 				epilogueMatcher.reset(line);
 				volumeMatcher.reset(line);
-				if (/*Line starts with BOOK [NUMBER]: or [FIRST/SECOND] EPILOGUE:*/) {
+				if (epilogueMatcher.find() || volumeMatcher.find()) {
 					currentVolume = new Volume();
 					currentChapter = currentVolume.newChapter();
 					volumes.add(currentVolume);
 					currentChapter.addContent(line);
 				}
-				else if (/*Line starts with CHAPTER[ROMAN NUMERAL OTHER THAN ONE]*/) {
+				else if (chapterMatcher.matches()) {
 					currentChapter = currentVolume.newChapter();
 					currentChapter.addContent(line);	
 				}
