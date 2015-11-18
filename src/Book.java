@@ -22,7 +22,9 @@ public class Book {
 		return volumes.get(volumeNum-1);
 	}
 	
-	//TODO: Figure out how to do the line pattern matching 
+	/*
+	 * Populates the volume and chapter lists.
+	 */
 	private void setContent() {
 		Pattern chapterExp = Pattern.compile("(CHAPTER) (.{0,7})");
 		Matcher chapterMatcher = chapterExp.matcher("");
