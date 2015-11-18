@@ -40,25 +40,30 @@ public class Book {
 			String line;
 			Volume currentVolume;
 			Chapter currentChapter;
-			while ((line = br.readLine()) != null) {
-
-				chapterMatcher.reset(line);
-				epilogueMatcher.reset(line);
-				volumeMatcher.reset(line);
-				if (epilogueMatcher.find() || volumeMatcher.find()) {
-					currentVolume = new Volume();
-					currentChapter = currentVolume.newChapter();
-					volumes.add(currentVolume);
-					currentChapter.addContent(line);
-				}
-				else if (chapterMatcher.matches()) {
-					currentChapter = currentVolume.newChapter();
-					currentChapter.addContent(line);	
-				}
+			try {
+				while ((line = br.readLine()) != null) {
+					chapterMatcher.reset(line);
+					epilogueMatcher.reset(line);
+					volumeMatcher.reset(line);
+					if (epilogueMatcher.find() || volumeMatcher.find()) {
+						currentVolume = new Volume();
+						currentChapter = currentVolume.newChapter();
+						volumes.add(currentVolume);
+						currentChapter.addContent(line);
+						System.out.println(line);
+					}
+					else if (chapterMatcher.matches()) {
+						currentChapter = currentVolume.newChapter();
+						currentChapter.addContent(line);
+						System.out.println(line);
+					}
 				
-				else {
-					currentChapter.addContent(line);
+					else {
+						currentChapter.addContent(line);
+					}
 				}
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 	}
 }
