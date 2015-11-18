@@ -31,7 +31,12 @@ public class Book {
 		Pattern volumeExp = Pattern.compile("(BOOK)");
 		Matcher volumeMatcher = volumeExp.matcher("");
 		
-			BufferedReader br = new BufferedReader(new FileReader(bookName));
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(bookName));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 			String line;
 			Volume currentVolume;
 			Chapter currentChapter;
