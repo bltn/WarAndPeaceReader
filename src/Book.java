@@ -38,8 +38,8 @@ public class Book {
 			e.printStackTrace();
 		}
 			String line;
-			Volume currentVolume;
-			Chapter currentChapter;
+			Volume currentVolume = null;
+			Chapter currentChapter = null;
 			try {
 				while ((line = br.readLine()) != null) {
 					chapterMatcher.reset(line);
