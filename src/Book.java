@@ -54,7 +54,7 @@ public class Book {
 					currentChapter.addContent(line);
 					System.out.println(line);
 				}
-				else if (chapterMatcher.matches()) {
+				else if (chapterMatcher.find()) {
 					currentChapter = currentVolume.newChapter();
 					currentChapter.addContent(line);
 					System.out.println(line);
