@@ -4,7 +4,7 @@ public class Chapter {
 	private String content;
 	
 	public Chapter() {
-		this.content = null;
+		this.content = "";
 	}
 	
 	public String getContent() {
@@ -12,7 +12,11 @@ public class Chapter {
 	}
 	
 	public void addContent(String content) {
-		this.content += content;
+		StringBuilder builder = new StringBuilder();
+		builder.append(this.content)
+				.append(content)
+				.append(" ");
+		this.content = builder.toString();
 	}
 
 }

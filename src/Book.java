@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Book {
 	
@@ -20,27 +22,50 @@ public class Book {
 		return volumes.get(volumeNum-1);
 	}
 	
-	//TODO: Figure out how to do the line pattern matching 
+	/*
+	 * Populates the volume and chapter lists.
+	 */
 	private void setContent() {
-			BufferedReader br = new BufferedReader(new FileReader(bookName));
-			String line;
+		Pattern chapterExp = Pattern.compile("(CHAPTER) (.{0,7})");
+		Matcher chapterMatcher = chapterExp.matcher("");
+		Pattern epilogueExp = Pattern.compile("(EPILOGUE)");
+		Matcher epilogueMatcher = epilogueExp.matcher("");
+		Pattern volumeExp = Pattern.compile("(BOOK)");
+		Matcher volumeMatcher = volumeExp.matcher("");
+		
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(bookName));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		String line;
+		Volume currentVolume = null;
+		Chapter currentChapter = null;
+		try {
 			while ((line = br.readLine()) != null) {
-				Volume currentVolume;
-				Chapter currentChapter;
-				if (/*Line starts with BOOK [NUMBER]: or [FIRST/SECOND] EPILOGUE:*/) {
+				chapterMatcher.reset(line);
+				epilogueMatcher.reset(line);
+				volumeMatcher.reset(line);
+				if (epilogueMatcher.find() || volumeMatcher.find()) {
 					currentVolume = new Volume();
 					currentChapter = currentVolume.newChapter();
 					volumes.add(currentVolume);
 					currentChapter.addContent(line);
+					System.out.println(line);
 				}
-				else if (/*Line starts with CHAPTER[ROMAN NUMERAL OTHER THAN ONE]*/) {
+				else if (chapterMatcher.find()) {
 					currentChapter = currentVolume.newChapter();
-					currentChapter.addContent(line);	
+					currentChapter.addContent(line);
+					System.out.println(line);
 				}
-				
+			
 				else {
 					currentChapter.addContent(line);
 				}
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
