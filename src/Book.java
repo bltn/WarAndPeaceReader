@@ -9,26 +9,38 @@ import java.util.regex.Pattern;
 
 public class Book {
 	
+	// relative path for the text file containing the book content 
 	private String bookName = "Data/ebook.txt";
-	
+	// all volumes in the book
 	private List<Volume> volumes;
-		
+	
+	/**
+	 * Create book object and initialise its fields 
+	 */
 	public Book() {
 		volumes = new LinkedList<Volume>();
 		setContent();
 	}
 	
+	/**
+	 * Returns the specified volume 
+	 * @param volumeNum Number of the required volume 
+	 * @return The requested volume
+	 */
 	public Volume getVolume(int volumeNum) {
 		return volumes.get(volumeNum-1);
 	}
 	
-	public static void main(String args[])
+	/**
+	 * @return number of Volume objects in the book
+	 */
+	public int getVolumeCount()
 	{
-		Book book = new Book();
+		return volumes.size();
 	}
 	
-	/*
-	 * Populates the volume and chapter lists.
+	/**
+	 * Populates all of the book's volumes and their individual chapters with content from the text file 
 	 */
 	private void setContent() {
 		Pattern chapterExp = Pattern.compile("(CHAPTER) (.{0,7})");
@@ -62,6 +74,7 @@ public class Book {
 				else if (chapterMatcher.find()) {
 					currentChapter = currentVolume.newChapter();
 					currentChapter.setTitle(line);
+					currentChapter.addContent(line);
 				}
 			
 				else {
