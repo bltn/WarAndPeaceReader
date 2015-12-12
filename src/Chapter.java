@@ -4,7 +4,7 @@ public class Chapter {
 	private String content;
 	
 	public Chapter() {
-		this.content = null;
+		this.content = "";
 	}
 	
 	public String getContent() {
