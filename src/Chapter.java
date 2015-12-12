@@ -12,7 +12,11 @@ public class Chapter {
 	}
 	
 	public void addContent(String content) {
-		this.content += content;
+		StringBuilder builder = new StringBuilder();
+		builder.append(this.content)
+				.append(content)
+				.append(" ");
+		this.content = builder.toString();
 	}
 
 }
