@@ -6,7 +6,7 @@ public class Volume {
 	
 	private List<Chapter> chapters;
 	
-	private String content; 
+	private String title; 
 	
 	public Volume() {
 		chapters = new LinkedList<Chapter>();
@@ -22,12 +22,17 @@ public class Volume {
 		return chapters.get(chapterNum-1);
 	}
 	
-	public void setContent(String content) {
-		this.content = content;
+	public boolean hasChapters() 
+	{
+		return !chapters.isEmpty();
 	}
 	
-	public String getContent() {
-		return content; 
+	public void setTitle(String content) {
+		this.title = content;
+	}
+	
+	public String getTitle() {
+		return title; 
 	}
 
 }
