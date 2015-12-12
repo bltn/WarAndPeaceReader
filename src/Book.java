@@ -22,6 +22,12 @@ public class Book {
 		return volumes.get(volumeNum-1);
 	}
 	
+	public static void main(String args[])
+	{
+		Book book = new Book();
+		//System.out.println(book.getVolume(1).getChapter(1).getContent());
+	}
+	
 	/*
 	 * Populates the volume and chapter lists.
 	 */
@@ -49,19 +55,22 @@ public class Book {
 				volumeMatcher.reset(line);
 				if (epilogueMatcher.find() || volumeMatcher.find()) {
 					currentVolume = new Volume();
-					currentChapter = currentVolume.newChapter();
+					//currentChapter = currentVolume.newChapter();
 					volumes.add(currentVolume);
-					currentChapter.addContent(line);
-					System.out.println(line);
+					currentVolume.setTitle(line);
+					//System.out.println(line);
 				}
 				else if (chapterMatcher.find()) {
 					currentChapter = currentVolume.newChapter();
-					currentChapter.addContent(line);
-					System.out.println(line);
+					currentChapter.setTitle(line);
+					//System.out.println(currentChapter.getTitle());
 				}
 			
 				else {
-					currentChapter.addContent(line);
+					if (currentVolume.hasChapters())
+					{
+						currentChapter.addContent(line);
+					}
 				}
 			}
 		} catch (IOException e) {
