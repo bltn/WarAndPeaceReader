@@ -18,8 +18,12 @@ public class Volume {
 		return chapter;
 	}
 	
+	public int getChapterCount() {
+		return chapters.size();
+	}
+	
 	public Chapter getChapter(int chapterNum) {
-		return chapters.get(chapterNum-1);
+		return chapters.get(chapterNum);
 	}
 	
 	public boolean hasChapters() 
