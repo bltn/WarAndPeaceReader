@@ -6,20 +6,63 @@ public class BookController implements Controller{
 	 */
 	private Book book;
 	
+	private int chapterBookmark;
+	
+	private int volumeBookmark;
+	
 	public BookController(Book book) {
 		this.book = book;
+		this.chapterBookmark = 0;
+		this.volumeBookmark = 1;
+	}
+	
+	public static void main(String args[])
+	{
+		Book book = new Book();
+		BookController controller = new BookController(book);
+		System.out.println(controller.getChapter(3, 2));
 	}
 	
 	@Override
 	public String getPreviousChapter() {
-		// TODO Auto-generated method stub
-		return null;
+		String chapter; 
+		if (chapterBookmark == 0 && volumeBookmark == 1)
+		{
+			chapter = this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent();
+		}
+		else if (chapterBookmark == 0 && volumeBookmark > 1)
+		{
+			volumeBookmark -= 1;
+			chapterBookmark = this.book.getVolume(volumeBookmark).getChapterCount()-1;
+			chapter = this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent();
+		}
+		else 
+		{
+			chapterBookmark -= 1;
+			chapter = this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent();
+		}
+		return chapter; 
 	}
 
 	@Override
 	public String getNextChapter() {
-		// TODO Auto-generated method stub
-		return null;
+		String chapter; 
+		if ((volumeBookmark == this.book.getVolumeCount()) && (chapterBookmark == this.book.getVolume(volumeBookmark).getChapterCount()-1))
+		{
+			chapter = this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent();
+		}
+		else if (volumeBookmark < this.book.getVolumeCount() && (chapterBookmark == this.book.getVolume(volumeBookmark).getChapterCount()-1))
+		{
+			volumeBookmark ++;
+			chapterBookmark = 0;
+			chapter = this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent();
+		}
+		else
+		{
+			chapterBookmark++;
+			chapter = this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent();
+		}
+		return chapter;
 	}
 
 	/**
