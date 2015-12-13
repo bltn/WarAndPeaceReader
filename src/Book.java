@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,7 +14,7 @@ public class Book {
 	private String bookName = "Data/ebook.txt";
 	// all volumes in the book
 	private List<Volume> volumes;
-	
+		
 	/**
 	 * Create book object and initialise its fields 
 	 */
@@ -37,6 +38,20 @@ public class Book {
 	public int getVolumeCount()
 	{
 		return volumes.size();
+	}
+	
+	public String getAllContent()
+	{
+		String allContent = null;
+		for (Volume v : volumes)
+		{
+			ListIterator<Chapter> chapterIterator = v.getChapterIterator(); 
+			while (chapterIterator.hasNext())
+			{
+				allContent += chapterIterator.next().getContent();
+			}
+		}
+		return allContent;
 	}
 	
 	/**

@@ -16,13 +16,6 @@ public class BookController implements Controller{
 		this.volumeBookmark = 1;
 	}
 	
-	public static void main(String args[])
-	{
-		Book book = new Book();
-		BookController controller = new BookController(book);
-		System.out.println(controller.getChapter(3, 2));
-	}
-	
 	@Override
 	public String getPreviousChapter() {
 		String chapter; 
@@ -81,14 +74,21 @@ public class BookController implements Controller{
 
 	@Override
 	public String getLinesWithWord(String word) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int getTotalOccurrences(String word) {
-		// TODO Auto-generated method stub
-		return 0;
+		int occurences = 0;
+		String results[] = this.book.getAllContent().split("\\s");
+		for (String result : results)
+		{
+			if (result.equals(word))
+			{
+				occurences++;
+			}
+		}
+		return occurences;
 	}
 
 }

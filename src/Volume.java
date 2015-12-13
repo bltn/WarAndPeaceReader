@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 
 public class Volume {
@@ -20,6 +21,11 @@ public class Volume {
 	
 	public int getChapterCount() {
 		return chapters.size();
+	}
+	
+	public ListIterator<Chapter> getChapterIterator()
+	{
+		return chapters.listIterator();
 	}
 	
 	public Chapter getChapter(int chapterNum) {
