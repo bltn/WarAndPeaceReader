@@ -54,6 +54,11 @@ public class Book {
 		return allContent;
 	}
 	
+	public ListIterator<Volume> getVolumeIterator()
+	{
+		return volumes.listIterator();
+	}
+	
 	/**
 	 * Populates all of the book's volumes and their individual chapters with content from the text file 
 	 */

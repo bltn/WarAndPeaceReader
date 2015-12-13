@@ -1,3 +1,5 @@
+import java.util.ListIterator;
+
 
 public class BookController implements Controller{
 	
@@ -14,6 +16,13 @@ public class BookController implements Controller{
 		this.book = book;
 		this.chapterBookmark = 0;
 		this.volumeBookmark = 1;
+	}
+	
+	public static void main(String[] args)
+	{
+		Book book = new Book();
+		BookController controller = new BookController(book);
+		System.out.println(book.getVolumeCount());
 	}
 	
 	@Override
@@ -74,7 +83,31 @@ public class BookController implements Controller{
 
 	@Override
 	public String getLinesWithWord(String word) {
-		return null;
+		// break into lines for each 
+		// if line contains character sequence
+		//...split it into individual words, see if contains
+		
+		ListIterator<Volume> volumeIterator = book.getVolumeIterator();
+		while (volumeIterator.hasNext())
+		{
+			Volume vol = volumeIterator.next();
+			ListIterator<Chapter> chapterIterator = vol.getChapterIterator();
+			while (chapterIterator.hasNext())
+			{
+				String[] lines = chapterIterator.next().getContent().split("\n");
+				for (String line : lines)
+				{
+					String[] words = line.split("\\s");
+					for (String phrase : words)
+					{
+						if (phrase.equals(word))
+						{
+							
+						}
+					}
+				}
+			}
+		}
 	}
 
 	@Override
