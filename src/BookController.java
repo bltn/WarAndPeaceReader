@@ -77,10 +77,6 @@ public class BookController implements Controller{
 
 	@Override
 	public String getLinesWithWord(String word) {
-		// break into lines for each 
-		// if line contains character sequence
-		//...split it into individual words, see if contains
-		
 		String occurences = "";
 		int currentVolume = 1;
 		int currentChapter = 0;
@@ -109,13 +105,6 @@ public class BookController implements Controller{
 		}
 		occurences += resultsCount + " lines with this keyword found."; 
 		return occurences;
-	}
-	
-	public static void main(String[] args)
-	{
-		Book book = new Book();
-		BookController controller = new BookController(book);
-		System.out.println(controller.getLinesWithWord("Antichrist"));
 	}
 
 	@Override

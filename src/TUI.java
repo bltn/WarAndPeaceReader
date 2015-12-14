@@ -40,6 +40,13 @@ public class TUI {
 			getAndProcessUserOption();
 		}
 	}
+	
+	public static void main(String[] args)
+	{
+		Book book = new Book();
+		BookController controller = new BookController(book);
+		TUI commandLine = new TUI(controller);
+	}
 
 	/*
 	 * Displays the header of this application and a summary of menu options.
