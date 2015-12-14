@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.List; 
 
 public class Chapter {
 	
@@ -20,6 +22,21 @@ public class Chapter {
 				.append(" ");
 		this.content = builder.toString();
 	}
+	
+	/*public String getKeyWordOccurences(String word)
+	{
+		String occurences;
+		String[] lines = this.content.split("\n");
+		for (String line : lines)
+		{
+			if (line.contains(word))
+			{
+				int lineNumber = Arrays.asList(lines).indexOf(line) + 1;
+				occurences = occurences + "Line " + lineNumber +
+			}
+		}
+		return null;
+	}*/
 
 	public String getTitle() {
 		return title;

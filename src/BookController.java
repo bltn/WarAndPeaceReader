@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.ListIterator;
 
 
@@ -16,13 +17,6 @@ public class BookController implements Controller{
 		this.book = book;
 		this.chapterBookmark = 0;
 		this.volumeBookmark = 1;
-	}
-	
-	public static void main(String[] args)
-	{
-		Book book = new Book();
-		BookController controller = new BookController(book);
-		System.out.println(book.getVolumeCount());
 	}
 	
 	@Override
@@ -87,6 +81,10 @@ public class BookController implements Controller{
 		// if line contains character sequence
 		//...split it into individual words, see if contains
 		
+		String occurences = "";
+		int currentVolume = 1;
+		int currentChapter = 0;
+		int resultsCount = 0;
 		ListIterator<Volume> volumeIterator = book.getVolumeIterator();
 		while (volumeIterator.hasNext())
 		{
@@ -97,17 +95,27 @@ public class BookController implements Controller{
 				String[] lines = chapterIterator.next().getContent().split("\n");
 				for (String line : lines)
 				{
-					String[] words = line.split("\\s");
-					for (String phrase : words)
+					if (line.contains(word))
 					{
-						if (phrase.equals(word))
-						{
-							
-						}
+						occurences += ("Line " + Arrays.asList(lines).indexOf(line) + " Chapter " + currentChapter + " Volume " + currentVolume + "\n");
+						occurences += (line + "\n");
+						resultsCount++;
 					}
 				}
+				currentChapter++;
 			}
+			currentChapter = 0;
+			currentVolume++;
 		}
+		occurences += resultsCount + " lines with this keyword found."; 
+		return occurences;
+	}
+	
+	public static void main(String[] args)
+	{
+		Book book = new Book();
+		BookController controller = new BookController(book);
+		System.out.println(controller.getLinesWithWord("Antichrist"));
 	}
 
 	@Override
