@@ -51,18 +51,12 @@ public class Book {
 		String allContent = null;
 		for (Volume v : volumes)
 		{
-			ListIterator<Chapter> chapterIterator = v.getChapterIterator(); 
-			while (chapterIterator.hasNext())
+			for (Chapter c : v.getChapters())
 			{
-				allContent += chapterIterator.next().getContent();
+				allContent += c.getContent();
 			}
 		}
 		return allContent;
-	}
-	
-	public ListIterator<Volume> getVolumeIterator()
-	{
-		return volumes.listIterator();
 	}
 	
 	/**

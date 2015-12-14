@@ -29,11 +29,6 @@ public class Volume {
 		return chapters.size();
 	}
 	
-	public ListIterator<Chapter> getChapterIterator()
-	{
-		return chapters.listIterator();
-	}
-	
 	public Chapter getChapter(int chapterNum) {
 		return chapters.get(chapterNum);
 	}
