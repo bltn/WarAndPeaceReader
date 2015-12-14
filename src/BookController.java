@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Date;
 import java.util.ListIterator;
 
 
@@ -87,25 +86,23 @@ public class BookController implements Controller{
 	 */
 	@Override
 	public String getLinesWithWord(String word) {
-		String ocurrence = "";
+		String occurrence = "";
 		int currentVolume = 1;
 		int currentChapter = 0;
 		int resultsCount = 0;
-		ListIterator<Volume> volumeIterator = book.getVolumeIterator();
-		while (volumeIterator.hasNext())
+		
+		for (Volume volume : book.getVolumes())
 		{
-			Volume vol = volumeIterator.next();
-			ListIterator<Chapter> chapterIterator = vol.getChapterIterator();
-			while (chapterIterator.hasNext())
+			for (Chapter chapter : volume.getChapters())
 			{
-				String[] lines = chapterIterator.next().getContent().split("\n");
+				String[] lines = chapter.getContent().split("\n");
 				for (String line : lines)
 				{
 					if (line.contains(word))
 					{
-						ocurrence += ("Line " + Arrays.asList(lines).indexOf(line) + " Chapter " + currentChapter + " Volume " + currentVolume + "\n");
-						ocurrence += (line + "\n");
-						resultsCount++;
+						occurrence += ("Line " + Arrays.asList(lines).indexOf(line) + " Chapter " + currentChapter + " Volume " + currentVolume + "\n");
+						occurrence += (line + "\n");
+						resultsCount++; 
 					}
 				}
 				currentChapter++;
@@ -113,8 +110,8 @@ public class BookController implements Controller{
 			currentChapter = 0;
 			currentVolume++;
 		}
-		ocurrence += resultsCount + " lines with this keyword found."; 
-		return ocurrence;
+		occurrence += resultsCount + " lines with this keyword found.";
+		return occurrence;
 	}
 	
 	/**

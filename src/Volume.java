@@ -14,6 +14,11 @@ public class Volume {
 		chapters = new ArrayList<Chapter>();
 	}
 	
+	public ArrayList<Chapter> getChapters()
+	{
+		return chapters;
+	}
+	
 	public Chapter newChapter() {
 		Chapter chapter = new Chapter();
 		chapters.add(chapter);

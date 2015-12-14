@@ -24,6 +24,11 @@ public class Book {
 		setContent();
 	}
 	
+	public ArrayList<Volume> getVolumes()
+	{
+		return volumes;
+	}
+	
 	/**
 	 * Returns the specified volume 
 	 * @param volumeNum Number of the required volume 
