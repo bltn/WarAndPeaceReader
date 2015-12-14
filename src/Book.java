@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -13,13 +14,13 @@ public class Book {
 	// relative path for the text file containing the book content 
 	private String bookName = "Data/ebook.txt";
 	// all volumes in the book
-	private List<Volume> volumes;
+	private ArrayList<Volume> volumes;
 		
 	/**
 	 * Create book object and initialise its fields 
 	 */
 	public Book() {
-		volumes = new LinkedList<Volume>();
+		volumes = new ArrayList<Volume>();
 		setContent();
 	}
 	

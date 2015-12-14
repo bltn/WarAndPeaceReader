@@ -1,16 +1,15 @@
 import java.util.Arrays;
+import java.util.Date;
 import java.util.ListIterator;
 
 
 public class BookController implements Controller{
 	
-	/**
-	 * The {@link Book} this {@link Controller} should handle. 
-	 */
+	// Book this controller handles 
 	private Book book;
-	
+	// Current chapter 
 	private int chapterBookmark;
-	
+	// Current volume 
 	private int volumeBookmark;
 	
 	public BookController(Book book) {
@@ -19,7 +18,10 @@ public class BookController implements Controller{
 		this.volumeBookmark = 1;
 	}
 	
-	@Override
+	/**
+	 * Returns the previous chapter or the current chapter if there is no previous chapter/volume 
+	 * @return String representation of the previous chapter
+	 */
 	public String getPreviousChapter() {
 		String chapter; 
 		if (chapterBookmark == 0 && volumeBookmark == 1)
@@ -40,7 +42,10 @@ public class BookController implements Controller{
 		return chapter; 
 	}
 
-	@Override
+	/**
+	 * Returns the next chapter or the current chapter if there is no next chapter/volume 
+	 * @return String representation of the next chapter
+	 */
 	public String getNextChapter() {
 		String chapter; 
 		if ((volumeBookmark == this.book.getVolumeCount()) && (chapterBookmark == this.book.getVolume(volumeBookmark).getChapterCount()-1))
@@ -75,9 +80,14 @@ public class BookController implements Controller{
 		return chapter.getContent();
 	}
 
+	/**
+	 * Gets lines containing occurrence of the given word
+	 * @param the word to search for 
+	 * @return lines containing occurrence of the word 
+	 */
 	@Override
 	public String getLinesWithWord(String word) {
-		String occurences = "";
+		String ocurrence = "";
 		int currentVolume = 1;
 		int currentChapter = 0;
 		int resultsCount = 0;
@@ -93,8 +103,8 @@ public class BookController implements Controller{
 				{
 					if (line.contains(word))
 					{
-						occurences += ("Line " + Arrays.asList(lines).indexOf(line) + " Chapter " + currentChapter + " Volume " + currentVolume + "\n");
-						occurences += (line + "\n");
+						ocurrence += ("Line " + Arrays.asList(lines).indexOf(line) + " Chapter " + currentChapter + " Volume " + currentVolume + "\n");
+						ocurrence += (line + "\n");
 						resultsCount++;
 					}
 				}
@@ -103,10 +113,15 @@ public class BookController implements Controller{
 			currentChapter = 0;
 			currentVolume++;
 		}
-		occurences += resultsCount + " lines with this keyword found."; 
-		return occurences;
+		ocurrence += resultsCount + " lines with this keyword found."; 
+		return ocurrence;
 	}
-
+	
+	/**
+	 * Gets the total number of occurrences of the given word
+	 * @param the word to count the occurrences of 
+	 * @return number of occurrences
+	 */
 	@Override
 	public int getTotalOccurrences(String word) {
 		int occurences = 0;
@@ -120,5 +135,4 @@ public class BookController implements Controller{
 		}
 		return occurences;
 	}
-
 }

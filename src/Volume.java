@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -5,12 +6,12 @@ import java.util.ListIterator;
 
 public class Volume {
 	
-	private List<Chapter> chapters;
+	private ArrayList<Chapter> chapters;
 	
 	private String title; 
 	
 	public Volume() {
-		chapters = new LinkedList<Chapter>();
+		chapters = new ArrayList<Chapter>();
 	}
 	
 	public Chapter newChapter() {
