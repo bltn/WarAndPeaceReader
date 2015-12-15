@@ -3,9 +3,9 @@ import java.util.ArrayList;
 
 public class Volume 
 {
-	
+	// All chapters within the volume
 	private ArrayList<Chapter> chapters;
-	
+	// Title of the volume 
 	private String title; 
 	
 	/**
