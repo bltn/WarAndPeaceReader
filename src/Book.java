@@ -36,6 +36,8 @@ public class Book
 	 * Returns the specified {@link Volume volume}.
 	 * @param volumeNum number of the required volume 
 	 * @return the requested volume
+	 * @throws IllegalArgumentException if the volume number is less than or equal to 0
+	 * @throws IllegalArgumentException if the volume number is more than the total volume count
 	 */
 	public Volume getVolume(int volumeNum) 
 	{

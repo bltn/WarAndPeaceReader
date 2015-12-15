@@ -50,6 +50,8 @@ public class Volume
 	 * Gets a {@link Chapter chapter}.
 	 * @param chapterNum the chapter number
 	 * @return the chapter
+	 * @throws IllegalArgumentException if the chapter number is less than 0
+	 * @throws IllegalArgumentException if the chapter number is more than the total size of the chapters
 	 */
 	public Chapter getChapter(int chapterNum) 
 	{
