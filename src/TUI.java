@@ -110,17 +110,21 @@ public class TUI {
 			case "show" : // Display the specified chapter
 				Matcher matcher = volumeChapterPattern.matcher(commandWords[1]);
 				if (matcher.matches()) {
-					try {
+					try 
+					{
 						int volumeNumber = Integer.parseInt(matcher.group(1)); 
 						int chapterNumber = Integer.parseInt(matcher.group(2));
-						try{
-						showChapterLookupResult(volumeNumber, chapterNumber, controller.getChapter(volumeNumber, chapterNumber));
-						} catch (IllegalArgumentException e) {
+						try
+						{
+							showChapterLookupResult(volumeNumber, chapterNumber, controller.getChapter(volumeNumber, chapterNumber));
+						} 
+						catch (IllegalArgumentException e) 
+						{
 							display(e.getMessage());
-							display("Please enter a valid volume/chapter number.");
 						}
 					}
-					catch (NumberFormatException nfe) {
+					catch (NumberFormatException nfe) 
+					{
 						display("Invalid volume and/or chapter number: " + commandWords[1]);
 					}
 				}
