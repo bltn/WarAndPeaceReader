@@ -54,15 +54,15 @@ public class Book {
 	 */
 	public String getAllContent()
 	{
-		String allContent = null;
+		StringBuilder allContent = new StringBuilder();
 		for (Volume v : volumes)
 		{
 			for (Chapter c : v.getChapters())
 			{
-				allContent += c.getContent();
+				allContent.append(c.getContent());
 			}
 		}
-		return allContent;
+		return allContent.toString();
 	}
 	
 	/**

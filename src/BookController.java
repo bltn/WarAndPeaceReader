@@ -25,23 +25,23 @@ public class BookController implements Controller{
 	 * @return String representation of the previous chapter
 	 */
 	public String getPreviousChapter() {
-		String chapter; 
+		StringBuilder chapter = new StringBuilder(); 
 		if (chapterBookmark == 0 && volumeBookmark == 1)
 		{
-			chapter = this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent();
+			chapter.append(this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent());
 		}
 		else if (chapterBookmark == 0 && volumeBookmark > 1)
 		{
 			volumeBookmark -= 1;
 			chapterBookmark = this.book.getVolume(volumeBookmark).getChapterCount()-1;
-			chapter = this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent();
+			chapter.append(this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent());
 		}
 		else 
 		{
 			chapterBookmark -= 1;
-			chapter = this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent();
+			chapter.append(this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent());
 		}
-		return chapter; 
+		return chapter.toString(); 
 	}
 
 	/**
@@ -49,23 +49,23 @@ public class BookController implements Controller{
 	 * @return String the next {@link Chapter chapter}
 	 */
 	public String getNextChapter() {
-		String chapter; 
+		StringBuilder chapter = new StringBuilder(); 
 		if ((volumeBookmark == this.book.getVolumeCount()) && (chapterBookmark == this.book.getVolume(volumeBookmark).getChapterCount()-1))
 		{
-			chapter = this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent();
+			chapter.append(this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent());
 		}
 		else if (volumeBookmark < this.book.getVolumeCount() && (chapterBookmark == this.book.getVolume(volumeBookmark).getChapterCount()-1))
 		{
 			volumeBookmark ++;
 			chapterBookmark = 0;
-			chapter = this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent();
+			chapter.append(this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent());
 		}
 		else
 		{
 			chapterBookmark++;
-			chapter = this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent();
+			chapter.append(this.book.getVolume(volumeBookmark).getChapter(chapterBookmark).getContent());
 		}
-		return chapter;
+		return chapter.toString();
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class BookController implements Controller{
 	 */
 	@Override
 	public String getLinesWithWord(String word) {
-		String occurrence = "";
+		StringBuilder occurrence = new StringBuilder();
 		int currentVolume = 1;
 		int currentChapter = 0;
 		int resultsCount = 0;
@@ -103,8 +103,8 @@ public class BookController implements Controller{
 				{
 					if (line.contains(word))
 					{
-						occurrence += ("Line " + Arrays.asList(lines).indexOf(line) + " Chapter " + currentChapter + " Volume " + currentVolume + "\n");
-						occurrence += (line + "\n");
+						occurrence.append("Line " + Arrays.asList(lines).indexOf(line) + " Chapter " + currentChapter + " Volume " + currentVolume + "\n");
+						occurrence.append(line + "\n");
 						resultsCount++; 
 					}
 				}
@@ -113,8 +113,8 @@ public class BookController implements Controller{
 			currentChapter = 0;
 			currentVolume++;
 		}
-		occurrence += resultsCount + " lines with this keyword found.";
-		return occurrence;
+		occurrence.append(resultsCount + " lines with this keyword found.");
+		return occurrence.toString();
 	}
 	
 	/**
