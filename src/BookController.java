@@ -10,6 +10,10 @@ public class BookController implements Controller{
 	// Current volume 
 	private int volumeBookmark;
 	
+	/**
+	 * Creates a new BookController object.
+	 * @param book the book to use
+	 */
 	public BookController(Book book) {
 		this.book = book;
 		this.chapterBookmark = 0;
@@ -17,7 +21,7 @@ public class BookController implements Controller{
 	}
 	
 	/**
-	 * Returns the previous chapter or the current chapter if there is no previous chapter/volume 
+	 * Returns the previous {@link Chapter chapter} or the current {@link Chapter chapter} if there is no previous {@link Chapter chapter}/{@link Volume volume}. 
 	 * @return String representation of the previous chapter
 	 */
 	public String getPreviousChapter() {
@@ -41,8 +45,8 @@ public class BookController implements Controller{
 	}
 
 	/**
-	 * Returns the next chapter or the current chapter if there is no next chapter/volume 
-	 * @return String representation of the next chapter
+	 * Returns the next chapter or the current chapter if there is no next {@link Chapter chapter}/{@link Volume volume}. 
+	 * @return String the next {@link Chapter chapter}
 	 */
 	public String getNextChapter() {
 		String chapter; 
@@ -65,7 +69,7 @@ public class BookController implements Controller{
 	}
 
 	/**
-	 * Gets the chapter for the given volume.
+	 * Gets the chapter for the given {@link Volume volume}.
 	 * @param volumeNumber the volume number
 	 * @param chapterNumber the chapter number
 	 * @return the content of the chapter
@@ -79,8 +83,8 @@ public class BookController implements Controller{
 	}
 
 	/**
-	 * Gets lines containing occurrence of the given word
-	 * @param the word to search for 
+	 * Gets lines containing occurrence of the given word.
+	 * @param word the word to search for 
 	 * @return lines containing occurrence of the word 
 	 */
 	@Override
@@ -114,9 +118,9 @@ public class BookController implements Controller{
 	}
 	
 	/**
-	 * Gets the total number of occurrences of the given word
-	 * @param the word to count the occurrences of 
-	 * @return number of occurrences
+	 * Gets the total number of occurrences of the given word.
+	 * @param word the word to count the occurrences of 
+	 * @return number of occurrences of the given word
 	 */
 	@Override
 	public int getTotalOccurrences(String word) {

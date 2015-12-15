@@ -14,35 +14,44 @@ public class Book {
 	private ArrayList<Volume> volumes;
 		
 	/**
-	 * Create book object and initialise its fields 
+	 * Create book object and initialise its fields. 
 	 */
 	public Book() {
 		volumes = new ArrayList<Volume>();
 		setContent();
 	}
 	
+	/**
+	 * Gets the {@link Volume volumes} in this book.
+	 * @return the volumes in this book.
+	 */
 	public ArrayList<Volume> getVolumes()
 	{
 		return volumes;
 	}
 	
 	/**
-	 * Returns the specified volume 
-	 * @param volumeNum Number of the required volume 
-	 * @return The requested volume
+	 * Returns the specified {@link Volume volume}.
+	 * @param volumeNum number of the required volume 
+	 * @return the requested volume
 	 */
 	public Volume getVolume(int volumeNum) {
 		return volumes.get(volumeNum-1);
 	}
 	
 	/**
-	 * @return number of Volume objects in the book
+	 * The total count of the {@link Volume volumes}.
+	 * @return number of {@link Volume} objects in the book
 	 */
 	public int getVolumeCount()
 	{
 		return volumes.size();
 	}
 	
+	/**
+	 * Gets all of the content in this book.
+	 * @return the content of this book
+	 */
 	public String getAllContent()
 	{
 		String allContent = null;
@@ -57,7 +66,7 @@ public class Book {
 	}
 	
 	/**
-	 * Populates all of the book's volumes and their individual chapters with content from the text file 
+	 * Populates all of this book's {@link Volume volumes} and their individual chapters with content from the text file. 
 	 */
 	private void setContent() {
 		Pattern chapterExp = Pattern.compile("(CHAPTER) (.{0,7})");
