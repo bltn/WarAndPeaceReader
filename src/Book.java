@@ -39,8 +39,8 @@ public class Book {
 		if(volumeNum <= 0) {
 			throw new IllegalArgumentException("Volume numbers should be 1 or more.");
 		}
-		if(volumeNum-1 > getVolumeCount()) {
-			throw new IllegalArgumentException("Volume with the given number does not exist.");
+		if(volumeNum > getVolumeCount()) {
+			throw new IllegalArgumentException("Volume " + volumeNum + " does not exist. Volumes 1-17 are available. Try one of those.");
 		}
 		return volumes.get(volumeNum-1);
 	}
