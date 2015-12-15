@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Book {
+public class Book 
+{
 	
 	// relative path for the text file containing the book content 
 	private String bookName = "Data/ebook.txt";
@@ -16,7 +17,8 @@ public class Book {
 	/**
 	 * Create book object and initialise its fields. 
 	 */
-	public Book() {
+	public Book() 
+	{
 		volumes = new ArrayList<Volume>();
 		setContent();
 	}
@@ -35,11 +37,14 @@ public class Book {
 	 * @param volumeNum number of the required volume 
 	 * @return the requested volume
 	 */
-	public Volume getVolume(int volumeNum) {
-		if(volumeNum <= 0) {
+	public Volume getVolume(int volumeNum) 
+	{
+		if(volumeNum <= 0) 
+		{
 			throw new IllegalArgumentException("Volume numbers should be 1 or more.");
 		}
-		if(volumeNum > getVolumeCount()) {
+		if(volumeNum > getVolumeCount()) 
+		{
 			throw new IllegalArgumentException("Volume " + volumeNum + " does not exist. Volumes 1-17 are available. Try one of those.");
 		}
 		return volumes.get(volumeNum-1);
@@ -74,7 +79,8 @@ public class Book {
 	/**
 	 * Populates all of this book's {@link Volume volumes} and their individual chapters with content from the text file. 
 	 */
-	private void setContent() {
+	private void setContent() 
+	{
 		Pattern chapterExp = Pattern.compile("(CHAPTER) (.{0,7})");
 		Matcher chapterMatcher = chapterExp.matcher("");
 		Pattern epilogueExp = Pattern.compile("(EPILOGUE)");
@@ -83,37 +89,46 @@ public class Book {
 		Matcher volumeMatcher = volumeExp.matcher("");
 		
 		BufferedReader br = null;
-		try {
+		try 
+		{
 			br = new BufferedReader(new FileReader(bookName));
-		} catch (FileNotFoundException e) {
+		} 
+		catch (FileNotFoundException e) 
+		{
 			e.printStackTrace();
 		}
 		String line;
 		Volume currentVolume = null;
 		Chapter currentChapter = null;
-		try {
-			while ((line = br.readLine()) != null) {
+		try 
+		{
+			while ((line = br.readLine()) != null) 
+			{
 				chapterMatcher.reset(line);
 				epilogueMatcher.reset(line);
 				volumeMatcher.reset(line);
-				if (epilogueMatcher.find() || volumeMatcher.find()) {
+				if (epilogueMatcher.find() || volumeMatcher.find()) 
+				{
 					currentVolume = new Volume();
 					currentChapter = currentVolume.newChapter();
 					volumes.add(currentVolume);
 					currentVolume.setTitle(line);
 					currentChapter.addContent(line);
 				}
-				else if (chapterMatcher.find()) {
+				else if (chapterMatcher.find()) 
+				{
 					currentChapter = currentVolume.newChapter();
 					currentChapter.setTitle(line);
 					currentChapter.addContent(line);
 				}
-			
-				else {
+				else 
+				{
 					currentChapter.addContent(line);
 				}
 			}
-		} catch (IOException e) {
+		} 
+		catch (IOException e) 
+		{
 			e.printStackTrace();
 		}
 	}

@@ -1,7 +1,8 @@
 import java.util.Arrays;
 
 
-public class BookController implements Controller{
+public class BookController implements Controller
+{
 	
 	// Book this controller handles 
 	private Book book;
@@ -14,7 +15,8 @@ public class BookController implements Controller{
 	 * Creates a new BookController object.
 	 * @param book the book to use
 	 */
-	public BookController(Book book) {
+	public BookController(Book book) 
+	{
 		this.book = book;
 		this.chapterBookmark = 0;
 		this.volumeBookmark = 1;
@@ -24,7 +26,8 @@ public class BookController implements Controller{
 	 * Returns the previous {@link Chapter chapter} or the current {@link Chapter chapter} if there is no previous {@link Chapter chapter}/{@link Volume volume}. 
 	 * @return String representation of the previous chapter
 	 */
-	public String getPreviousChapter() {
+	public String getPreviousChapter() 
+	{
 		StringBuilder chapter = new StringBuilder(); 
 		if (chapterBookmark == 0 && volumeBookmark == 1)
 		{
@@ -48,7 +51,8 @@ public class BookController implements Controller{
 	 * Returns the next chapter or the current chapter if there is no next {@link Chapter chapter}/{@link Volume volume}. 
 	 * @return String the next {@link Chapter chapter}
 	 */
-	public String getNextChapter() {
+	public String getNextChapter() 
+	{
 		StringBuilder chapter = new StringBuilder(); 
 		if ((volumeBookmark == this.book.getVolumeCount()) && (chapterBookmark == this.book.getVolume(volumeBookmark).getChapterCount()-1))
 		{
@@ -75,8 +79,8 @@ public class BookController implements Controller{
 	 * @return the content of the chapter
 	 */
 	@Override
-	public String getChapter(int volumeNumber, int chapterNumber) {
-		//TODO: Add error handling for non existent volumes and/or chapters 
+	public String getChapter(int volumeNumber, int chapterNumber) 
+	{
 		Volume volume = book.getVolume(volumeNumber);
 		Chapter chapter = volume.getChapter(chapterNumber);
 		return chapter.getContent();
@@ -88,7 +92,8 @@ public class BookController implements Controller{
 	 * @return lines containing occurrence of the word 
 	 */
 	@Override
-	public String getLinesWithWord(String word) {
+	public String getLinesWithWord(String word) 
+	{
 		StringBuilder occurrence = new StringBuilder();
 		int currentVolume = 1;
 		int currentChapter = 0;
@@ -123,7 +128,8 @@ public class BookController implements Controller{
 	 * @return number of occurrences of the given word
 	 */
 	@Override
-	public int getTotalOccurrences(String word) {
+	public int getTotalOccurrences(String word) 
+	{
 		int occurences = 0;
 		String results[] = this.book.getAllContent().split("\\s");
 		for (String result : results)

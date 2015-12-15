@@ -6,7 +6,8 @@
  * @author S H S Wong
  * @version 29/10/2015 
  */
-public interface Controller {
+public interface Controller 
+{
 	
 	/**
 	 * Returns the text in the previous chapter.

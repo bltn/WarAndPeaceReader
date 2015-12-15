@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 
 
-public class Volume {
+public class Volume 
+{
 	
 	private ArrayList<Chapter> chapters;
 	
@@ -10,7 +11,8 @@ public class Volume {
 	/**
 	 * Creates a new Volume object.
 	 */
-	public Volume() {
+	public Volume() 
+	{
 		chapters = new ArrayList<Chapter>();
 	}
 	
@@ -28,7 +30,8 @@ public class Volume {
 	 * Creates a new {@link Chapter}.
 	 * @return the new chapter
 	 */
-	public Chapter newChapter() {
+	public Chapter newChapter() 
+	{
 		Chapter chapter = new Chapter();
 		chapters.add(chapter);
 		return chapter;
@@ -38,7 +41,8 @@ public class Volume {
 	 * The total count of the {@link Chapter chapter}.
 	 * @return the total count of the chapters
 	 */
-	public int getChapterCount() {
+	public int getChapterCount() 
+	{
 		return chapters.size();
 	}
 	
@@ -47,7 +51,8 @@ public class Volume {
 	 * @param chapterNum the chapter number
 	 * @return the chapter
 	 */
-	public Chapter getChapter(int chapterNum) {
+	public Chapter getChapter(int chapterNum) 
+	{
 		if(chapterNum < 0) {
 			throw new IllegalArgumentException("Chapter numbers should be 0 or more.");
 		}
@@ -70,7 +75,8 @@ public class Volume {
 	 * Sets the title of this volume.
 	 * @param content the title to set for this volume
 	 */
-	public void setTitle(String content) {
+	public void setTitle(String content) 
+	{
 		this.title = content;
 	}
 	
@@ -78,7 +84,8 @@ public class Volume {
 	 * Gets the title of this volume.
 	 * @return the title of this title
 	 */
-	public String getTitle() {
+	public String getTitle() 
+	{
 		return title; 
 	}
 

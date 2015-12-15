@@ -1,15 +1,17 @@
  
 
-public class Chapter {
-	
+public class Chapter 
+{
+	// Text contained in the chapter 
 	private String content;
-	
+	// Chapter's title, numbered in Roman numerals 
 	private String title;
 	
 	/**
 	 * Creates a new chapter.
 	 */
-	public Chapter() {
+	public Chapter() 
+	{
 		this.content = "";
 	}
 	
@@ -17,7 +19,8 @@ public class Chapter {
 	 * Gets the content for this chapter.
 	 * @return the content
 	 */
-	public String getContent() {
+	public String getContent() 
+	{
 		return content;
 	}
 	
@@ -25,34 +28,21 @@ public class Chapter {
 	 * Adds content to this chapter.
 	 * @param content the content
 	 */
-	public void addContent(String content) {
+	public void addContent(String content) 
+	{
 		StringBuilder builder = new StringBuilder();
 		builder.append(this.content)
 				.append(content + "\n")
 				.append(" ");
 		this.content = builder.toString();
 	}
-	
-	/*public String getKeyWordOccurences(String word)
-	{
-		String occurences;
-		String[] lines = this.content.split("\n");
-		for (String line : lines)
-		{
-			if (line.contains(word))
-			{
-				int lineNumber = Arrays.asList(lines).indexOf(line) + 1;
-				occurences = occurences + "Line " + lineNumber +
-			}
-		}
-		return null;
-	}*/
 
 	/**
 	 * Gets the title of this chapter.
 	 * @return the title
 	 */
-	public String getTitle() {
+	public String getTitle() 
+	{
 		return title;
 	}
 	
@@ -60,7 +50,8 @@ public class Chapter {
 	 * Sets the title of this chapter.
 	 * @param title the title to set
 	 */
-	public void setTitle(String title) {
+	public void setTitle(String title) 
+	{
 		this.title = title;
 	}
 
