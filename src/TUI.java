@@ -177,7 +177,8 @@ public class TUI
 	 * Display the result of the previous/next chapter lookup features.
 	 * @param the result
 	 */
-	private void showChapterLookupResult(String result) {
+	private void showChapterLookupResult(String result) 
+	{
 		if (result == null) 
 		{
 			display("No further chapters to show.");
