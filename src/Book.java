@@ -36,6 +36,12 @@ public class Book {
 	 * @return the requested volume
 	 */
 	public Volume getVolume(int volumeNum) {
+		if(volumeNum <= 0) {
+			throw new IllegalArgumentException("Volume numbers should be 1 or more.");
+		}
+		if(volumeNum-1 > getVolumeCount()) {
+			throw new IllegalArgumentException("Volume with the given number does not exist.");
+		}
 		return volumes.get(volumeNum-1);
 	}
 	

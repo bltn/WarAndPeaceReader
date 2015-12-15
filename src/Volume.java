@@ -48,6 +48,12 @@ public class Volume {
 	 * @return the chapter
 	 */
 	public Chapter getChapter(int chapterNum) {
+		if(chapterNum < 0) {
+			throw new IllegalArgumentException("Chapter numbers should be 0 or more.");
+		}
+		if(chapterNum > chapters.size()) {
+			throw new IllegalArgumentException("Chapter with the given number does not exist.");
+		}
 		return chapters.get(chapterNum);
 	}
 	
