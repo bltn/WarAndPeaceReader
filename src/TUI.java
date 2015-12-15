@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  */
 public class TUI 
 {
-	private static final Pattern volumeChapterPattern = Pattern.compile("([0-9]+):([0-9]+)");
+	private static final Pattern VOLUME_CHAPTER_PATTERN = Pattern.compile("([0-9]+):([0-9]+)");
 	
 	private Controller controller; // The controller which this TUI is working with
 	
@@ -115,7 +115,7 @@ public class TUI
 				display("The word {" + commandWords[1] + "} occurs " + controller.getTotalOccurrences(commandWords[1]) + " time(s).\n");
 				break;
 			case "show" : // Display the specified chapter
-				Matcher matcher = volumeChapterPattern.matcher(commandWords[1]);
+				Matcher matcher = VOLUME_CHAPTER_PATTERN.matcher(commandWords[1]);
 				if (matcher.matches()) 
 				{
 					try 
