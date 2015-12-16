@@ -108,9 +108,16 @@ public class BookController implements Controller
 				{
 					if (line.contains(word))
 					{
-						occurrence.append("Line " + Arrays.asList(lines).indexOf(line) + " Chapter " + currentChapter + " Volume " + currentVolume + "\n");
-						occurrence.append(line + "\n");
-						resultsCount++; 
+						String[] phrases = line.split("\\s");
+						for (String phrase : phrases)
+						{
+							if (phrase.contains(word))
+							{
+								occurrence.append("Line " + Arrays.asList(lines).indexOf(line) + " Chapter " + currentChapter + " Volume " + currentVolume + "\n");
+								occurrence.append(line + "\n");
+								resultsCount++; 
+							}
+						} 
 					}
 				}
 				currentChapter++;
@@ -118,7 +125,7 @@ public class BookController implements Controller
 			currentChapter = 0;
 			currentVolume++;
 		}
-		occurrence.append(resultsCount + " lines with this keyword found.");
+		occurrence.append(resultsCount + " results found.");
 		return occurrence.toString();
 	}
 	
