@@ -79,7 +79,7 @@ public class BookController implements Controller
 	}
 
 	/**
-	 * Gets the chapter for the given {@link Volume volume}.
+	 * Gets the chapter for the given {@link Volume volume} and places the bookmark at the chapter. 
 	 * @param volumeNumber the volume number
 	 * @param chapterNumber the chapter number
 	 * @return the content of the chapter
@@ -89,6 +89,8 @@ public class BookController implements Controller
 	{
 		Volume volume = book.getVolume(volumeNumber);
 		Chapter chapter = volume.getChapter(chapterNumber);
+		this.chapterBookmark = chapterNumber;
+		this.volumeBookmark = volumeNumber;
 		return chapter.getContent();
 	}
 
