@@ -59,7 +59,7 @@ public class Volume
 			throw new IllegalArgumentException("Chapter numbers should be 0 or more.");
 		}
 		if(chapterNum > chapters.size()) {
-			throw new IllegalArgumentException("Chapter with the given number does not exist.");
+			throw new IllegalArgumentException("Chapter " + chapterNum + " does not exist.");
 		}
 		return chapters.get(chapterNum);
 	}
