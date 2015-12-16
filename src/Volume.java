@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 
-
+/**
+ * Models a book volume and holds a collection of its chapters 
+ * @author Ben Lawton
+ * @author Denver Fernandes 
+ */
 public class Volume 
 {
 	// All chapters within the volume

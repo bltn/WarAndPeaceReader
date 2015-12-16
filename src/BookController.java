@@ -1,6 +1,12 @@
 import java.util.Arrays;
 
 
+/**
+ * Controller class for book objects
+ * Handles search and interaction operations 
+ * @author Ben Lawton
+ * @author Denver Fernandes 
+ */
 public class BookController implements Controller
 {
 	

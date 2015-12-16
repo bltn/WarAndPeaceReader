@@ -1,5 +1,9 @@
  
-
+/**
+ * Models a chapter of the book 
+ * @author Ben Lawton 
+ * @author Denver Fernandes 
+ */
 public class Chapter 
 {
 	// Text contained in the chapter 

@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Models the book and holds a collection of its volumes 
+ * @author Ben Lawton
+ * @author Denver Fernandes
+ */
 public class Book 
 {
 	

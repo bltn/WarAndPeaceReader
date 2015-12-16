@@ -8,11 +8,13 @@ import java.util.regex.Pattern;
  * A simple text-based user interface for a eBook application.
  * 
  * @author S H S Wong
- * @version 14/12/2015 
+ * @author Ben Lawton
+ * @author Denver Fernandes 
+ * @version 14/12/2015
  */
 public class TUI {
 	
-	private static final Pattern volumeChapterPattern = Pattern.compile("([0-9]+):([0-9]+)");
+	private static final Pattern VOLUME_CHAPTER_PATTERN = Pattern.compile("([0-9]+):([0-9]+)");
 	
 	private Controller controller; // The controller which this TUI is working with
 	
@@ -110,7 +112,7 @@ public class TUI {
 				break;
 			case "show" : // Display the specified chapter
 				if (commandWords.length == 2) {
-					Matcher matcher = volumeChapterPattern.matcher(commandWords[1]);
+					Matcher matcher = VOLUME_CHAPTER_PATTERN.matcher(commandWords[1]);
 					if (matcher.matches()) {
 						try {
 							int volumeNumber = Integer.parseInt(matcher.group(1)); 
