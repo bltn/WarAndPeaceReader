@@ -147,7 +147,7 @@ public class BookController implements Controller
 		String results[] = this.book.getAllContent().split("\\s");
 		for (String result : results)
 		{
-			if (result.equals(word))
+			if (result.contains(word))
 			{
 				occurences++;
 			}
